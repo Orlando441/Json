@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Alunos</title>
+</head>
+<body>
+    <h1>Lista de Alunos</h1>
+    <div id="alunos-container"></div>
+
+    <script>
+        fetch('Alunos.json')
+            .then(response => response.json())
+            .then(data => {
+                const alunosContainer = document.getElementById('alunos-container');
+
+                data.alunos.forEach(aluno => {
+                    const alunoDiv = document.createElement('div');
+                    alunoDiv.innerHTML = `
+                        <h2>${aluno.nome}</h2>
+                        <p><strong>Idade:</strong> ${aluno.idade}</p>
+                        <p><strong>Nota:</strong> ${aluno.nota}</p>
+                        <p><strong>Disciplinas:</strong> ${aluno.disciplinas.join(', ')}</p>
+                        <hr>
+                    `;
+                    alunosContainer.appendChild(alunoDiv);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar os dados:', error));
+    </script>
+</body>
+</html>
+
+    
+</body>
+</html>
